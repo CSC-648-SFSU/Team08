@@ -45,11 +45,11 @@ const TEAM = [
   },
   {
     name: "Ibrahim",
-    role: "",
-    photo: "", // insert the path of your profile photo
-    thumb: "",                          // card thumbnail; inset the image of your favourite star
+    role: "Front-End Developer",
+    photo: "Team_images/Ibrahimshuman.jpg", // insert the path of your profile photo
+    thumb: "Team_images/Ibrahim_profile.jpg",                          // card thumbnail; inset the image of your favourite star
     details:
-      "",
+      "Hello, I'm Ibrahim Shuman. I am a computer science student at San Francisco State University with an interest in software development and front-end development. I enjoy building websites and working with others on projects.",
   },
   {
     name: "Pralhad",
