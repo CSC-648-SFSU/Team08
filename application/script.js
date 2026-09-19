@@ -12,7 +12,7 @@ const TEAM = [
   {
     name: "Priyanshu",
     role: "Front-end Lead",
-    photo: "Team_images/priyanshu.heic", // popup photo
+    photo: "Team_images/priyanshu.jpg", // popup photo
     thumb: "Team_images/Pri_profile.jpg",                          // card thumbnail; leave "" to keep the red card
     details:
       "Hey, I\u2019m Priyanshu, an international student from India. Outside of school " +
