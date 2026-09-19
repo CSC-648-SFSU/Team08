@@ -1,0 +1,428 @@
+/* Values below come straight from the Figma file (1280 x 832 frames). */
+:root {
+  --font: "Cal Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --black: #000000;
+  --white: #ffffff;
+  --card-red: rgba(255, 0, 0, 0.39);
+  --panel-gray: #d9d9d9;
+  --overlay-gray: rgba(217, 217, 217, 0.6);
+  --pill-bg: rgba(217, 217, 217, 0.2);
+  --pill-border: rgba(0, 0, 0, 0.12);
+
+  --landing-gradient: linear-gradient(
+    -58.12deg,
+    rgb(245, 167, 65) 0.62%,
+    rgb(255, 255, 255) 39.08%,
+    rgb(255, 255, 255) 54.27%,
+    rgba(0, 242, 255, 0.61) 99.38%
+  );
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: var(--font);
+  font-weight: 400;
+  background: var(--white);
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+  font-weight: 400;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a,
+button {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid #0a84ff;
+  outline-offset: 4px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.view {
+  min-height: 100vh;
+  position: relative;
+}
+
+.view[hidden] {
+  display: none;
+}
+
+/* ---------- Screen 1: Landing ---------- */
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 94px 24px 48px;
+  background: var(--landing-gradient);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.home__shape {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 59.4%; /* 760.5 / 1280 */
+  z-index: -1;
+  pointer-events: none;
+}
+
+.home__shape--left {
+  left: 0;
+}
+
+.home__shape--right {
+  right: 0;
+}
+
+.home__title {
+  font-size: 48px;
+  line-height: normal;
+  color: var(--black);
+  text-align: center;
+}
+
+.home__button {
+  margin-top: 77px; /* gap between title bottom and button in Figma */
+  width: 281px;
+  height: 75px;
+  display: grid;
+  place-items: center;
+  font-size: 40px;
+  text-decoration: none;
+  color: var(--black);
+  background: var(--pill-bg);
+  border: 1px solid var(--pill-border);
+  border-radius: 42px;
+  transition:  
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+/* Black fill that sweeps in from the left on hover */
+.home__button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--black);
+  border-radius: inherit;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+.home__button:hover,
+.home__button:focus-visible {
+  color: var(--white);
+  border-color: var(--black);
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
+}
+ 
+.home__button:hover::before,
+.home__button:focus-visible::before {
+  transform: scaleX(1);
+}
+ 
+/* Press down when clicked */
+.home__button:active {
+  transform: translateY(0) scale(0.97);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transition-duration: 0.1s;
+}
+ 
+/* ---------- Page-to-page transition ---------- */
+@keyframes page-out {
+  to { opacity: 0; transform: scale(0.96); filter: blur(4px); }
+}
+ 
+@keyframes page-in {
+  from { opacity: 0; transform: scale(1.04); filter: blur(4px); }
+}
+ 
+/* Browsers with the View Transitions API (Chrome, Edge, Safari 18+) */
+::view-transition-old(root) {
+  animation: page-out 0.35s cubic-bezier(0.4, 0, 1, 1) both;
+}
+ 
+::view-transition-new(root) {
+  animation: page-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+ 
+/* Fallback for other browsers: the new page fades in */
+.view.is-entering {
+  animation: page-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ---------- Screen 2: Meet the Team ---------- */
+.team {
+  background: var(--black);
+  color: var(--white);
+  padding: 42px 24px 64px;
+}
+
+.team__back {
+  position: absolute;
+  top: 54px;
+  left: 54px;
+  width: 30px;
+  height: 31px;
+}
+
+.team__back img {
+  width: 30px;
+  height: 31px;
+}
+
+.team__title {
+  font-size: 48px;
+  line-height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.team__wave {
+  width: 62px;
+  height: 62px;
+  flex: none;
+}
+
+.team__grid {
+  list-style: none;
+  margin: 70px auto 0;
+  padding: 0;
+  max-width: 1132px; /* 4 cards x 178px + 3 gaps x 140px */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: 140px;
+  row-gap: 110px;
+}
+
+.member {
+  width: 178px;
+}
+
+.member__button {
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+.member__photo {
+  width: 178px;
+  height: 153px;
+  border-radius: 16px;
+  background: var(--card-red);
+  object-fit: cover;
+  transition: transform 0.15s ease;
+}
+
+.member__button:hover .member__photo {
+  transform: translateY(-3px);
+}
+
+.member__name {
+  display: block;
+  margin-top: 19px;
+  font-size: 24px;
+  line-height: 31px;
+  color: var(--white);
+}
+
+/* ---------- Screen 3: Profile popup ---------- */
+.profile {
+  width: min(841px, calc(100vw - 32px));
+  min-height: 602px;
+  max-height: calc(100vh - 170px);
+  margin: 138px auto auto; 
+  padding: 50px 55px 50px 76px;
+  border: 0;
+  border-radius: 49px;
+  background: var(--overlay-gray);
+  color: var(--black);
+  overflow: auto;
+}
+
+.profile[open] {
+  display: flex;
+  gap: 70px;
+  align-items: flex-start;
+  
+}
+/* The popup takes focus when it opens, but shouldn't draw a ring around itself */
+.profile:focus,
+.profile:focus-visible {
+  outline: none;
+}
+.profile::backdrop {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.profile__close {
+  position: absolute;
+  top: 20px;
+  right: 28px;
+  width: 60px;
+  height: 60px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.profile__close img {
+  width: 60px;
+  height: 60px;
+}
+
+.profile__left {
+  flex: 0 0 275px;
+  margin-top: 42px; 
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+
+.profile__pic {
+  width: 275px;
+  height: 319px;
+  border-radius: 26px;
+  background: var(--panel-gray);
+  display: grid;
+  place-items: center;
+  font-size: 24px;
+  overflow: hidden;
+}
+
+.profile__pic img {
+  width: 100%;
+  height: 100%;
+  border-radius: 25px;
+  object-fit: cover;
+}
+
+.profile__role {
+  width: 275px;
+  height: 65px;
+  border-radius: 20px;
+  background: var(--panel-gray);
+  display: grid;
+  place-items: center;
+  font-size: 24px;
+  text-align: center;
+}
+
+.profile__details {
+  flex: 0 0 365px;
+  margin-top: 42px;
+  min-height: 435px;
+  padding: 31px 32px;
+  border-radius: 36px;
+  background: var(--panel-gray);
+  display: grid;
+  place-items: center;
+  font-size: 24px;
+  text-align: center;
+}
+
+/* ---------- Smaller screens ---------- */
+@media (max-width: 900px) {
+  .home__title,
+  .team__title {
+    font-size: 34px;
+  }
+
+  .team__title {
+    line-height: 1.3;
+    padding: 0 48px;
+  }
+
+  .team__back {
+    top: 28px;
+    left: 20px;
+  }
+
+  .team__grid {
+    column-gap: 40px;
+    row-gap: 48px;
+  }
+  
+  .profile {
+  margin: auto;
+  max-height: calc(100vh - 32px);
+  }
+
+  .profile__pic--photo {
+  margin-left: 0;
+  }
+
+  .profile[open] {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    padding: 80px 24px 32px;
+    border-radius: 32px;
+  }
+
+  .profile__left,
+  .profile__details {
+    flex: none;
+    margin-top: 0;
+    width: 100%;
+    max-width: 365px;
+    align-items: center;
+  }
+
+  .profile__details {
+    min-height: 240px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSC 648 · Section 3 · Team 8</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cal+Sans&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Screen 1: Landing (Figma "MacBook Air - 3") -->
+  <main id="home" class="view home">
+    <img class="home__shape home__shape--left" src="shape_left.svg" alt="" aria-hidden="true" />
+    <img class="home__shape home__shape--right" src="shape_right.svg" alt="" aria-hidden="true" />
+
+    <h1 class="home__title">
+      Software Engineering Class SFSU<br />
+      Fall, 2026<br />
+      Section 2<br />
+      Team 8
+    </h1>
+
+    <a class="home__button" href="#team">Contributors</a>
+  </main>
+
+  <!-- Screen 2: Meet the Team (Figma "MacBook Air - 1") -->
+  <main id="team" class="view team" hidden>
+    <a class="team__back" href="#" aria-label="Back to home">
+      <img src="arrow_back.svg" width="30" height="31" alt="" />
+    </a>
+
+    <h1 class="team__title">
+      Meet the Team
+      <img class="team__wave" src="front_hand.svg" width="62" height="62" alt="" />
+    </h1>
+
+    <ul class="team__grid" id="team-grid">
+      <!-- Cards are generated from the TEAM list in script.js -->
+    </ul>
+  </main>
+
+  <!-- Screen 3: Profile popup (Figma "Erwan", "Priyanshu", ... frames) -->
+  <dialog class="profile" id="profile" tabindex="-1" aria-labelledby="profile-name">
+    <button class="profile__close" type="button" aria-label="Close">
+      <img src="close.svg" width="60" height="60" alt="" />
+    </button>
+
+    <div class="profile__left">
+      <div class="profile__pic" id="profile-pic">Pic</div>
+      <p class="profile__role" id="profile-role">Front-end Lead</p>
+    </div>
+
+    <div class="profile__details">
+      <h2 class="visually-hidden" id="profile-name"></h2>
+      <p id="profile-details">Details</p>
+    </div>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
