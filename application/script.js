@@ -22,10 +22,12 @@ const TEAM = [
   {
     name: "Erwan",
     role: "",
-    photo: "", // insert the path of your profile photo
-    thumb: "",                          // card thumbnail; inset the image of your favourite star
+    photo: "Team_images/erwan.jpg", // insert the path of your profile photo
+    thumb: "Team_images/erwan_profile.jpg",                          // card thumbnail; inset the image of your favourite star
     details:
-      "",
+      "Hey, I\u2019m Erwan. I\u2029m an international student from Epita, France. I love" +
+      "video games of all kind, musical theater and swimming. I\u2029m hard-working " +
+      "when need be and lazy when possible.",
   },
   {
     name: "Diya",
